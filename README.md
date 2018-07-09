@@ -31,6 +31,11 @@ $ python manage.py runserver
 
 browse http://localhost:8000/
 
+### create super user
+<pre>
+$ python manage.py createsuperuser
+</pre>
+
 ## start app
 <pre>
 $ pwd
@@ -51,3 +56,28 @@ $ python manage.py runserver
 </pre>
 
 browse http://localhost:8000/polls/
+
+## migration
+
+### SQLite3 migrate
+<pre>
+$ python manage.py migrate
+</pre>
+
+### modelクラスの定義からマイグレーションファイルを生成
+<pre>
+$ python manage.py makemigrations polls
+$ la polls/migrations/
+合計 16K
+-rw-r--r-- 1 koge koge 1.3K  7月  9 15:40 0001_initial.py
+</pre>
+
+### マイグレーションした場合にどうなるかを（実DBに適用せず）標準出力
+<pre>
+$ python manage.py sqlmigrate polls 0001
+</pre>
+
+### マイグレーション実行
+<pre>
+$ python manage.py migrate
+</pre>
